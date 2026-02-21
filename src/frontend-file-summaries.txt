@@ -1,0 +1,17 @@
+{
+  "frontend/src/App.tsx": "Main application component with screen navigation, difficulty selection UI, and menu system for game, high scores, and instructions.",
+  "frontend/src/components/Game.tsx": "Core game component managing canvas rendering, game loop, difficulty settings, audio integration, pause/resume functionality, and game over states.",
+  "frontend/src/components/GameUI.tsx": "Displays real-time game information including level, score, high score, and active power-ups with countdown timers and icons.",
+  "frontend/src/components/HighScores.tsx": "Shows leaderboard of top 10 scores with timestamps, ranking indicators, and ability to clear all saved scores.",
+  "frontend/src/game/types.ts": "TypeScript type definitions for game entities including Player, Obstacle, GameState with currentLevel, Difficulty types, PowerUp interfaces, and LevelTheme configuration.",
+  "frontend/src/game/Player.ts": "Player character class with keyboard input handling, movement physics with speed multiplier support, shield visual effects, and canvas rendering.",
+  "frontend/src/game/GameEngine.ts": "Game engine managing difficulty-based obstacle spawning, power-up system, collision detection, level progression, theme transitions, audio callbacks, and canvas rendering.",
+  "frontend/src/hooks/useGameStorage.ts": "Custom React hook managing localStorage operations for scores, difficulty settings, and current level persistence.",
+  "frontend/src/hooks/useQueries.ts": "Placeholder file for React Query hooks (intentionally minimal as game is fully offline).",
+  "frontend/src/index.css": "Global styles with OKLCH-based warm earth tone color system (terracotta, amber, sage green) for both light and dark modes, custom utility classes, and typography setup.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending theme with custom fonts (Inter, Poppins), warm earth tone colors, custom shadows, and design tokens matching the game aesthetic.",
+  "frontend/src/game/themes.ts": "Defines visual themes for different level ranges (1-3, 4-6, 7-9, 10+) with warm earth-tone OKLCH color palettes and exports getLevelTheme function.",
+  "frontend/src/hooks/useAudioManager.ts": "Custom React hook managing Web Audio API for background music, sound effects, volume controls, mute state, and localStorage persistence of audio settings.",
+  "frontend/src/components/AudioControls.tsx": "Audio settings component with volume sliders for music and sound effects, mute toggle button, and visual volume indicators.",
+  "frontend/src/components/LevelBadge.tsx": "Component displaying milestone badges with celebration animations when reaching levels 1, 5, and 10 using generated image assets."
+}

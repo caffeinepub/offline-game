@@ -1,0 +1,114 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-multiple-difficulty-levels-easy-medium-hard-that-affect-obstacle-spawn-rate-and-speed-accessible-from-the-main-menu",
+      "featureTitle": "Add multiple difficulty levels (Easy, Medium, Hard) that affect obstacle spawn rate and speed, accessible from the main menu",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Game.tsx",
+        "frontend/src/game/GameEngine.ts",
+        "frontend/src/game/types.ts",
+        "frontend/src/hooks/useGameStorage.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-level-progression-system-where-players-advance-through-stages-with-increasing-challenge",
+      "featureTitle": "Implement a level progression system where players advance through stages with increasing challenge",
+      "files": [
+        "frontend/src/components/Game.tsx",
+        "frontend/src/components/GameUI.tsx",
+        "frontend/src/game/GameEngine.ts",
+        "frontend/src/game/types.ts",
+        "frontend/src/hooks/useGameStorage.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-power-ups-that-spawn-randomly-during-gameplay-speed-boost-shield-slow-motion-with-visual-indicators-and-temporary-effects",
+      "featureTitle": "Add power-ups that spawn randomly during gameplay (speed boost, shield, slow-motion) with visual indicators and temporary effects",
+      "files": [
+        "frontend/src/components/GameUI.tsx",
+        "frontend/src/game/GameEngine.ts",
+        "frontend/src/game/Player.ts",
+        "frontend/src/game/types.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-sound-effects-for-key-game-events-player-movement-collision-score-milestones-power-up-collection-and-background-music-with-volume-controls",
+      "featureTitle": "Add sound effects for key game events (player movement, collision, score milestones, power-up collection) and background music with volume controls",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/AudioControls.tsx",
+        "frontend/src/components/Game.tsx",
+        "frontend/src/game/GameEngine.ts",
+        "frontend/src/hooks/useAudioManager.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-distinct-visual-themes-for-different-game-levels-with-unique-background-gradients-obstacle-colors-and-environmental-elements",
+      "featureTitle": "Create distinct visual themes for different game levels with unique background gradients, obstacle colors, and environmental elements",
+      "files": [
+        "frontend/src/components/Game.tsx",
+        "frontend/src/components/LevelBadge.tsx",
+        "frontend/src/game/GameEngine.ts",
+        "frontend/src/game/themes.ts",
+        "frontend/src/game/types.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

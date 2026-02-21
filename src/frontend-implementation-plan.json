@@ -1,0 +1,214 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Expand game with enhanced features and functionality",
+  "requirements": [
+    {
+      "id": "REQ-5",
+      "summary": "Add multiple difficulty levels (Easy, Medium, Hard) that affect obstacle spawn rate and speed, accessible from the main menu",
+      "acceptanceCriteria": [
+        "Menu includes difficulty selection before starting game",
+        "Easy mode spawns obstacles slower with lower speed",
+        "Medium mode uses current spawn/speed settings",
+        "Hard mode spawns obstacles faster with higher speed",
+        "Difficulty setting persists in localStorage between sessions"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/game/types.ts",
+          "operation": "modify",
+          "description": "Add Difficulty type definition ('easy' | 'medium' | 'hard') and DifficultyConfig interface with spawnInterval and obstacleSpeed properties to support configurable game difficulty levels"
+        },
+        {
+          "path": "frontend/src/game/GameEngine.ts",
+          "operation": "modify",
+          "description": "Add difficulty parameter to constructor, implement difficulty-based spawn rate and obstacle speed configuration using DifficultyConfig, modify spawn logic to use difficulty-specific intervals"
+        },
+        {
+          "path": "frontend/src/hooks/useGameStorage.ts",
+          "operation": "modify",
+          "description": "Add getDifficulty and setDifficulty functions to persist selected difficulty level in localStorage, defaulting to 'medium' if not set"
+        },
+        {
+          "path": "frontend/src/components/Game.tsx",
+          "operation": "modify",
+          "description": "Accept difficulty prop and pass it to GameEngine constructor to initialize game with selected difficulty settings"
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add difficulty selection UI to menu screen with three buttons (Easy, Medium, Hard), load saved difficulty from useGameStorage on mount, pass selected difficulty to Game component when starting game"
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Implement a level progression system where players advance through stages with increasing challenge",
+      "acceptanceCriteria": [
+        "Game tracks current level based on score thresholds",
+        "Each new level introduces faster obstacles or different patterns",
+        "UI displays current level number during gameplay",
+        "Level progression is visually indicated with animations or color changes",
+        "Level progress is saved to localStorage"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/game/types.ts",
+          "operation": "modify",
+          "description": "Add currentLevel property to GameState interface to track player's progression level during gameplay"
+        },
+        {
+          "path": "frontend/src/game/GameEngine.ts",
+          "operation": "modify",
+          "description": "Add level calculation logic based on score thresholds (e.g., level = floor(score / 100) + 1), increase obstacle speed and spawn rate progressively as level increases, update state.currentLevel in game loop, trigger visual theme changes on level up"
+        },
+        {
+          "path": "frontend/src/hooks/useGameStorage.ts",
+          "operation": "modify",
+          "description": "Add getCurrentLevel and setCurrentLevel functions to persist highest reached level in localStorage for session continuity"
+        },
+        {
+          "path": "frontend/src/components/GameUI.tsx",
+          "operation": "modify",
+          "description": "Add level display element showing current level number, implement level-up animation when level changes (scale pulse, color flash), position level indicator near score display"
+        },
+        {
+          "path": "frontend/src/components/Game.tsx",
+          "operation": "modify",
+          "description": "Load saved level from useGameStorage when initializing game, save level progress to localStorage when game ends or level increases"
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Add power-ups that spawn randomly during gameplay (speed boost, shield, slow-motion) with visual indicators and temporary effects",
+      "acceptanceCriteria": [
+        "Power-ups appear as collectible items on the canvas",
+        "Speed boost increases player movement speed temporarily",
+        "Shield allows one collision without game over",
+        "Slow-motion reduces obstacle speed temporarily",
+        "Active power-ups show timer or visual indicator in GameUI",
+        "Power-up effects expire after set duration"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/game/types.ts",
+          "operation": "modify",
+          "description": "Add PowerUpType enum ('speedBoost' | 'shield' | 'slowMotion'), PowerUp interface with type, position, size, and collected status, ActivePowerUp interface with type, expiresAt timestamp, and add powerUps and activePowerUps arrays to GameState"
+        },
+        {
+          "path": "frontend/src/game/GameEngine.ts",
+          "operation": "modify",
+          "description": "Implement power-up spawning logic with random intervals (every 10-15 seconds), add collision detection between player and power-ups, apply power-up effects (speed multiplier for speedBoost, collision immunity flag for shield, obstacle speed reduction for slowMotion), manage active power-up timers and expiration, render power-up icons on canvas using generated image assets from frontend/public/assets/generated/powerup-speed.dim_64x64.png, frontend/public/assets/generated/powerup-shield.dim_64x64.png, and frontend/public/assets/generated/powerup-slowmo.dim_64x64.png"
+        },
+        {
+          "path": "frontend/src/game/Player.ts",
+          "operation": "modify",
+          "description": "Add speedMultiplier parameter to update method, modify movement calculations to apply speed multiplier when speed boost is active, add hasShield property to track shield protection state"
+        },
+        {
+          "path": "frontend/src/components/GameUI.tsx",
+          "operation": "modify",
+          "description": "Add active power-ups display section showing icon and remaining time for each active power-up, implement countdown timer display, add visual indicators (glow effect, progress bar) for active power-ups using generated image assets"
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Add sound effects for key game events (player movement, collision, score milestones, power-up collection) and background music with volume controls",
+      "acceptanceCriteria": [
+        "Background music loops during gameplay",
+        "Sound effects play for collisions and power-ups",
+        "Volume controls accessible from pause menu",
+        "Audio settings persist in localStorage",
+        "Mute toggle available",
+        "All audio works offline"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/audio/background-music.mp3",
+          "operation": "create",
+          "description": "Create placeholder audio file for background music (can be replaced with actual music file). This ensures the audio system has a valid file reference for offline playback"
+        },
+        {
+          "path": "frontend/public/assets/audio/collision.mp3",
+          "operation": "create",
+          "description": "Create placeholder audio file for collision sound effect"
+        },
+        {
+          "path": "frontend/public/assets/audio/powerup.mp3",
+          "operation": "create",
+          "description": "Create placeholder audio file for power-up collection sound effect"
+        },
+        {
+          "path": "frontend/public/assets/audio/score-milestone.mp3",
+          "operation": "create",
+          "description": "Create placeholder audio file for score milestone sound effect"
+        },
+        {
+          "path": "frontend/src/hooks/useAudioManager.ts",
+          "operation": "create",
+          "description": "Create custom React hook that manages audio playback using Web Audio API, provides play/pause/stop functions for background music and sound effects, manages volume levels and mute state, preloads all audio files for offline playback, persists audio settings to localStorage, returns audio control functions and current settings"
+        },
+        {
+          "path": "frontend/src/components/Game.tsx",
+          "operation": "modify",
+          "description": "Integrate useAudioManager hook, start background music when game starts, pause music when game is paused, stop music on game over, trigger sound effects for collisions and power-up collections by passing audio manager to GameEngine"
+        },
+        {
+          "path": "frontend/src/game/GameEngine.ts",
+          "operation": "modify",
+          "description": "Accept audio manager callbacks in constructor, trigger collision sound effect when collision detected, trigger power-up sound effect when power-up collected, trigger score milestone sound at score thresholds (every 100 points)"
+        },
+        {
+          "path": "frontend/src/components/AudioControls.tsx",
+          "operation": "create",
+          "description": "Create component with volume sliders for music and sound effects, mute toggle button, use useAudioManager hook to control audio settings, display current volume levels with visual indicators"
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add AudioControls component to pause menu overlay, ensure audio controls are accessible during gameplay via pause state"
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Create distinct visual themes for different game levels with unique background gradients, obstacle colors, and environmental elements",
+      "acceptanceCriteria": [
+        "Each level range (1-3, 4-6, 7-9, 10+) has unique color palette",
+        "Background gradients transition smoothly between themes",
+        "Obstacles adopt theme-specific colors",
+        "Visual themes remain within warm earth-tone aesthetic",
+        "Theme changes are clearly noticeable to player"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/game/types.ts",
+          "operation": "modify",
+          "description": "Add LevelTheme interface with backgroundColor (gradient), obstacleColor, accentColor properties, add currentTheme property to GameState"
+        },
+        {
+          "path": "frontend/src/game/themes.ts",
+          "operation": "create",
+          "description": "Define theme configuration object mapping level ranges to LevelTheme objects, create themes for levels 1-3 (warm terracotta/amber), 4-6 (burnt orange/rust), 7-9 (deep amber/sienna), 10+ (rich earth/bronze), export getLevelTheme function that returns appropriate theme based on current level, all colors using OKLCH warm earth-tone palette"
+        },
+        {
+          "path": "frontend/src/game/GameEngine.ts",
+          "operation": "modify",
+          "description": "Import getLevelTheme function, update current theme when level changes, apply theme background gradient to canvas, use theme obstacleColor when rendering obstacles, implement smooth color transition animation when theme changes (fade over 1 second)"
+        },
+        {
+          "path": "frontend/src/components/LevelBadge.tsx",
+          "operation": "create",
+          "description": "Create component that displays level milestone badges when reaching levels 1, 5, and 10, use generated image assets from frontend/public/assets/generated/level-badge-1.dim_128x128.png, frontend/public/assets/generated/level-badge-5.dim_128x128.png, and frontend/public/assets/generated/level-badge-10.dim_128x128.png, show badge with celebration animation when milestone reached, auto-dismiss after 3 seconds"
+        },
+        {
+          "path": "frontend/src/components/Game.tsx",
+          "operation": "modify",
+          "description": "Add LevelBadge component, trigger badge display when player reaches milestone levels (1, 5, 10), pass current level to LevelBadge for appropriate badge image selection"
+        }
+      ]
+    }
+  ]
+}

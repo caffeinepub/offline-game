@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Offline game project",
+  "architectural_notes": [
+    "Game must work without internet connectivity"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Power-up icons set including speed boost, shield, and slow-motion with warm earth-tone styling (powerup-speed.dim_64x64.png)\n- Power-up icons set including speed boost, shield, and slow-motion with warm earth-tone styling (powerup-shield.dim_64x64.png)\n- Power-up icons set including speed boost, shield, and slow-motion with warm earth-tone styling (powerup-slowmo.dim_64x64.png)\n- Level milestone badges or banners for levels 1, 5, and 10 with geometric shapes and warm colors (level-badge-1.dim_128x128.png)\n- Level milestone badges or banners for levels 1, 5, and 10 with geometric shapes and warm colors (level-badge-5.dim_128x128.png)\n- Level milestone badges or banners for levels 1, 5, and 10 with geometric shapes and warm colors (level-badge-10.dim_128x128.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-game-that-works-completely-offline-without-requiring-internet-connectivity",
+      "title": "Create a game that works completely offline without requiring internet connectivity",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-core-gameplay-mechanics-with-player-movement-and-interaction",
+      "title": "Implement core gameplay mechanics with player movement and interaction",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-design-and-implement-a-cohesive-visual-theme-with-warm-earth-tones-terracotta-amber-sage-green-and-clean-geometric-shapes-for-a-modern-accessible-game-interface",
+      "title": "Design and implement a cohesive visual theme with warm earth tones (terracotta, amber, sage green) and clean geometric shapes for a modern, accessible game interface",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-store-high-scores-and-game-progress-locally-using-browser-storage",
+      "title": "Store high scores and game progress locally using browser storage",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-multiple-difficulty-levels-easy-medium-hard-that-affect-obstacle-spawn-rate-and-speed-accessible-from-the-main-menu",
+      "title": "Add multiple difficulty levels (Easy, Medium, Hard) that affect obstacle spawn rate and speed, accessible from the main menu",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-level-progression-system-where-players-advance-through-stages-with-increasing-challenge",
+      "title": "Implement a level progression system where players advance through stages with increasing challenge",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-power-ups-that-spawn-randomly-during-gameplay-speed-boost-shield-slow-motion-with-visual-indicators-and-temporary-effects",
+      "title": "Add power-ups that spawn randomly during gameplay (speed boost, shield, slow-motion) with visual indicators and temporary effects",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-sound-effects-for-key-game-events-player-movement-collision-score-milestones-power-up-collection-and-background-music-with-volume-controls",
+      "title": "Add sound effects for key game events (player movement, collision, score milestones, power-up collection) and background music with volume controls",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-distinct-visual-themes-for-different-game-levels-with-unique-background-gradients-obstacle-colors-and-environmental-elements",
+      "title": "Create distinct visual themes for different game levels with unique background gradients, obstacle colors, and environmental elements",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create offline playable game",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Offline Game",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
